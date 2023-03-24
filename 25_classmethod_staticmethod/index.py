@@ -14,21 +14,21 @@ class ClassTest:
 class Book:
   TYPES = ("hardcover", "paperback")
 
-  def __init__(self, name, book_type, weight):
+  def __init__(self, name: str, book_type: str, weight: int):
     self.name = name
     self.book_type = book_type
     self.weight = weight
 
-  def __repr__(self):
+  def __repr__(self) -> str:
     return f"<Book {self.name}, {self.book_type}, weighing {self.weight}g>"
 
   @classmethod
-  def hardcover(cls, name, page_weight):
+  def hardcover(cls, name, page_weight) -> "Book":
     return Book(name, Book.TYPES[0], page_weight + 100)
 
   @classmethod
   # using cls and Book here has the same effect
-  def paperback(cls, name, page_weight):
+  def paperback(cls, name, page_weight) -> "Book":
     return cls(name, cls.TYPES[1], page_weight)
 
 test = ClassTest()
